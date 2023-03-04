@@ -9,18 +9,23 @@ public class EmployeeWage {
     public static final int emp_Part_Time = 2;
     public static final int emp_Rate_Per_Hour = 20;
      static  int Num_Of_working_Days;
+     static int max_Hrs_In_Month;
 
 
     public static void main(String[] args) {
         System.out.println("Welcome To Employee Wage Program");
 
         int empHrs = 0;
-        int empwage = 0;
-        int totalEmpWage = 0;
+        int totalEmpHrs = 0;
+        int total_Working_Days = 0;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter The Number of Working Days");
         EmployeeWage.Num_Of_working_Days = sc.nextInt();
-        for (int day = 0; day < EmployeeWage.Num_Of_working_Days; day++) {
+        System.out.println("Enter Maximum working hours in Month");
+        EmployeeWage.max_Hrs_In_Month = sc.nextInt();
+        while (totalEmpHrs <= EmployeeWage.max_Hrs_In_Month &&
+                total_Working_Days < EmployeeWage.Num_Of_working_Days) {
+            total_Working_Days++;
 
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
 
@@ -37,11 +42,12 @@ public class EmployeeWage {
                     empHrs = 0;
                     System.out.println("Employee is Absent");
             }
-            empwage = empHrs * emp_Rate_Per_Hour;
-            totalEmpWage += empwage;
-            System.out.println("Emp Wage :" + empwage);
+            totalEmpHrs += empHrs;
+            System.out.println("Day :" + total_Working_Days + "Emp Hr :" + empHrs);
         }
+        int totalEmpWage = totalEmpHrs * emp_Rate_Per_Hour;
         System.out.println("Total Emp Wage :" + totalEmpWage);
     }
+
     }
 
