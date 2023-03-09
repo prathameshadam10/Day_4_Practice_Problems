@@ -1,21 +1,23 @@
 package com.bridgelabz;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.Scanner;
-class EmpWage{
- public static final int emp_Full_Time = 1;
-    public static final int emp_Part_Time = 2;
-    public static final int emp_Rate_Per_Hour = 20;
-    public static final int Num_Of_working_Days = 20;
-    public static final int max_Hrs_In_Month = 100;
 
 
-    public void computeEmpWage(){
+public class EmployeeWage {
 
+
+    public static void computeEmpWage(String companyName, int emp_Rate_Per_Hour,
+                                     int Num_Of_working_Days, int max_Hrs_In_Month){
+
+        final int emp_Full_Time = 1;
+        final int emp_Part_Time = 2;
         int empHrs = 0;
         int totalEmpHrs = 0;
         int total_Working_Days = 0;
+        System.out.println("Details of " + companyName + "employee");
+        System.out.println("--------------------------------------");
+        System.out.println("Emp Rate per hour :" + emp_Rate_Per_Hour );
+        System.out.println("Maximum Working days :" + Num_Of_working_Days);
+        System.out.println("Maximum hrs in month :" + max_Hrs_In_Month);
 
         while (totalEmpHrs <= max_Hrs_In_Month &&
                 total_Working_Days < Num_Of_working_Days) {
@@ -41,15 +43,19 @@ class EmpWage{
             System.out.println("Day :" + total_Working_Days + "Emp Hr :" + empHrs);
         }
         int totalEmpWage = totalEmpHrs * emp_Rate_Per_Hour;
-        System.out.println("Total Emp Wage :" + totalEmpWage);
+        System.out.println("Total Emp Wage for Month :" + totalEmpWage);
 
     }
-}
-    public class EmployeeWage {
+
+
+
     public static void main(String[] args) {
             System.out.println("Welcome To Employee Wage Program");
-            EmpWage e = new EmpWage();
-            e.computeEmpWage();
+            EmployeeWage.computeEmpWage("Amazon", 20,
+                    20,100);
+            EmployeeWage.computeEmpWage("TATA", 50,
+                    25,150);
+
 
 
 
@@ -57,6 +63,9 @@ class EmpWage{
         }
 
     }
+
+
+
 
 
 
