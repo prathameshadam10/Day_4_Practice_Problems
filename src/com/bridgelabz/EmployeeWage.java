@@ -2,25 +2,45 @@ package com.bridgelabz;
 
 
 
+import java.util.Scanner;
+
 public class EmployeeWage {
 
 
-    public static void computeEmpWage(String companyName, int emp_Rate_Per_Hour,
-                                     int Num_Of_working_Days, int max_Hrs_In_Month){
+
 
         final int emp_Full_Time = 1;
         final int emp_Part_Time = 2;
-        int empHrs = 0;
-        int totalEmpHrs = 0;
-        int total_Working_Days = 0;
-        System.out.println("Details of " + companyName + "employee");
-        System.out.println("--------------------------------------");
-        System.out.println("Emp Rate per hour :" + emp_Rate_Per_Hour );
-        System.out.println("Maximum Working days :" + Num_Of_working_Days);
-        System.out.println("Maximum hrs in month :" + max_Hrs_In_Month);
+        public static int emp_Rate_Per_Hour, Num_of_Working_Days, max_Hrs_In_Month;
+
+        public void EmpWageBuilder1() {
+            emp_Rate_Per_Hour = 100;
+            Num_of_Working_Days = 20;
+            max_Hrs_In_Month = 100;
+            System.out.println("Total Comapny wage : " + (emp_Rate_Per_Hour * max_Hrs_In_Month));
+        }
+
+        public void EmpWageBuilder2() {
+            emp_Rate_Per_Hour = 200;
+            Num_of_Working_Days = 23;
+            max_Hrs_In_Month = 120;
+            System.out.println("Total Company wage :" + (emp_Rate_Per_Hour * max_Hrs_In_Month));
+        }
+         public void EmpWageBuilder3() {
+        emp_Rate_Per_Hour = 300;
+        Num_of_Working_Days = 25;
+        max_Hrs_In_Month = 150;
+        System.out.println("Total Company wage :" + (emp_Rate_Per_Hour * max_Hrs_In_Month));
+        }
+
+        public void computeEmpWage(){
+            int empHrs = 0;
+             int totalEmpHrs = 0;
+             int total_Working_Days = 0;
+
 
         while (totalEmpHrs <= max_Hrs_In_Month &&
-                total_Working_Days < Num_Of_working_Days) {
+                total_Working_Days < Num_of_Working_Days) {
             total_Working_Days++;
 
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
@@ -42,27 +62,42 @@ public class EmployeeWage {
             totalEmpHrs += empHrs;
             System.out.println("Day :" + total_Working_Days + "Emp Hr :" + empHrs);
         }
-        int totalEmpWage = totalEmpHrs * emp_Rate_Per_Hour;
-        System.out.println("Total Emp Wage for Month :" + totalEmpWage);
-
-    }
-
-
-
-    public static void main(String[] args) {
-            System.out.println("Welcome To Employee Wage Program");
-            EmployeeWage.computeEmpWage("Amazon", 20,
-                    20,100);
-            EmployeeWage.computeEmpWage("TATA", 50,
-                    25,150);
-
-
-
+        int totalEmpWagePerMonth = totalEmpHrs * emp_Rate_Per_Hour;
+        System.out.println("Total Emp Wage for Month :" + totalEmpWagePerMonth);
+        int totalEmpWagePerYear = totalEmpWagePerMonth * 12;
 
 
         }
+        public static void main(String[] args) {
+            Scanner sc = new Scanner (System.in);
+        System.out.println("Welcome To Employee Wage Program");
+            System.out.println("-----------------------------");
+            System.out.println("Enter the Company name : \n 1. Amazon \n 2. TATA \n 3.Infosis");
+            int company = sc.nextInt();
+            EmployeeWage s = new EmployeeWage();
+            switch (company){
+                case 1:
+                    s.EmpWageBuilder1();
+                    s.computeEmpWage();
+                    break;
+                case 2:
+                    s.EmpWageBuilder2();
+                    s.computeEmpWage();
+                    break;
+                case 3:
+                    s.EmpWageBuilder3();
+                    s.computeEmpWage();
+                    break;
+            }
+
+
+
+
 
     }
+
+}
+
 
 
 
